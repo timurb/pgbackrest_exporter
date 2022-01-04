@@ -17,6 +17,8 @@ ENV EXPORTER_ENDPOINT="/metrics" \
     STANZA_INCLUDE="" \
     STANZA_EXCLUDE="" \
     COLLECT_INTERVAL="600"
+
+RUN apt-get update && apt-get install -y ca-certificates
 COPY --from=builder --chmod=755 /build/pgbackrest_exporter /etc/pgbackrest/pgbackrest_exporter
 LABEL \
     org.opencontainers.image.version="${REPO_BUILD_TAG}" \
